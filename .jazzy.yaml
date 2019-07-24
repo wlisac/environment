@@ -1,0 +1,8 @@
+module: Environment
+github_url: https://github.com/wlisac/environment
+
+author: Will Lisac
+author_url: https://twitter.com/wlisac
+
+clean: true
+theme: fullwidth
