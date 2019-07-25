@@ -1,0 +1,99 @@
+if: (type = pull_request) OR (branch = master) OR (tag =~ /^\d+\.\d+\.\d+(-.*)?$/)
+
+stages:
+  - name: pretest
+  - name: test
+  - name: deploy
+    if: tag =~ /^\d+\.\d+\.\d+(-.*)?$/
+
+os: osx
+language: swift
+xcode_project: Environment.xcodeproj
+xcode_scheme: Environment-Package
+
+jobs:
+  include:
+    - &linux
+      name: Linux / Swift 5.0.1
+      env: SWIFT_VERSION=5.0.1
+      os: linux
+      language: generic
+      install: eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
+      script: swift test --parallel
+
+    - <<: *linux
+      name: Linux / Swift 5.1 (2019-07-19)
+      env: SWIFT_VERSION=5.1-DEVELOPMENT-SNAPSHOT-2019-07-19-a
+      
+    - &macOS
+      name: macOS / Swift 5.0
+      osx_image: xcode10.2
+      script: swift test --parallel
+
+    - <<: *macOS
+      name: macOS / Swift 5.1
+      osx_image: xcode11
+
+    - &xcodebuild
+      name: iOS / Swift 5.0
+      osx_image: xcode10.2
+      xcode_destination: platform=iOS Simulator,OS=latest,name=iPhone XS
+      before_install: swift package generate-xcodeproj --enable-code-coverage
+      after_success: bash <(curl -s https://codecov.io/bash)
+
+    - <<: *xcodebuild
+      name: iOS / Swift 5.1
+      xcode_destination: platform=iOS Simulator,OS=13.0,name=iPhone Xs
+      osx_image: xcode11
+
+    - <<: *xcodebuild
+      name: tvOS / Swift 5.0
+      xcode_destination: platform=tvOS Simulator,OS=latest,name=Apple TV
+
+    - <<: *xcodebuild
+      name: tvOS / Swift 5.1
+      xcode_destination: platform=tvOS Simulator,OS=13.0,name=Apple TV
+      osx_image: xcode11
+
+    - <<: *xcodebuild
+      name: watchOS / Swift 5.0
+      script: |
+        set -o pipefail
+        xcodebuild \
+          -project Environment.xcodeproj \
+          -scheme Environment-Package \
+          -destination 'platform=watchOS Simulator,OS=latest,name=Apple Watch Series 4 - 40mm' \
+          build | xcpretty
+      after_success: false
+
+    - <<: *xcodebuild
+      name: watchOS / Swift 5.1
+      osx_image: xcode11
+      script: |
+        set -o pipefail
+        xcodebuild \
+          -project Environment.xcodeproj \
+          -scheme Environment-Package \
+          -destination 'platform=watchOS Simulator,OS=6.0,name=Apple Watch Series 4 - 40mm' \
+          build | xcpretty
+      after_success: false
+
+    - stage: pretest
+      name: Validate Generated Linux Tests
+      osx_image: xcode11
+      install: swift test --generate-linuxmain
+      script: git diff --exit-code
+
+    - name: Jazzy
+      osx_image: xcode11
+      stage: deploy
+      install: gem install jazzy
+      before_script: swift package generate-xcodeproj
+      script: jazzy --module-version $TRAVIS_TAG
+      deploy:
+        provider: pages
+        skip-cleanup: true
+        github-token: $GITHUB_TOKEN
+        local-dir: docs
+        on:
+          tags: true
