@@ -6,7 +6,7 @@
 [![twitter](https://img.shields.io/badge/twitter-@wlisac-blue.svg)](https://twitter.com/wlisac)
 <br>
 [![build](https://travis-ci.com/wlisac/environment.svg?branch=master)](https://travis-ci.com/wlisac/environment)
-[![jazzy](https://raw.githubusercontent.com/wlisac/environment/gh-pages/badge.svg?sanitize=true)](http://wlisac.github.io/environment)
+[![jazzy](https://raw.githubusercontent.com/wlisac/environment/gh-pages/badge.svg?sanitize=true)](https://wlisac.github.io/environment/Structs/Environment.html)
 [![codecov](https://img.shields.io/codecov/c/github/wlisac/environment)](https://codecov.io/gh/wlisac/environment)
 
 Welcome to **Environment** – a nicer, type-safe way of working with environment variables in Swift.
@@ -141,7 +141,7 @@ let defaultDirection: CompassPoint? = environment["DEFAULT_DIRECTION"]
 
 ## API Documentation
 
-Visit our [online API reference](https://wlisac.github.io/environment/Structs/Environment.html) for full documentation of the public API.
+Visit the [online API reference](https://wlisac.github.io/environment/Structs/Environment.html) for full documentation of the public API.
 
 ## Installation
 
