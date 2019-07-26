@@ -35,6 +35,9 @@ Environment variables are accessed as `String` values by default, but can be [co
 // Get "HOST" as URL value
 let host: URL? = environment["HOST"]
 
+// Get "PORT" as Int value
+let port: Int? = environment["PORT"]
+
 // Set "PORT" to Int value of 8000
 environment["PORT"] = 8000
 
