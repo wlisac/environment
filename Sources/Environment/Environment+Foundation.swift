@@ -45,7 +45,6 @@ extension CGFloat: EnvironmentStringConvertible {
     }
 }
 
-
 extension Data: EnvironmentStringConvertible {
     public init(environmentString: String) {
         self = Data(environmentString.utf8)

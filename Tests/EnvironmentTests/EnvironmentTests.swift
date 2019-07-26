@@ -8,6 +8,7 @@
 import Environment
 import XCTest
 
+// swiftlint:disable:next type_body_length
 class EnvironmentTests: XCTestCase {
     override func setUp() {
         super.setUp()
