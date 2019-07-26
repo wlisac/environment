@@ -7,19 +7,22 @@ extension EnvironmentTests {
     // to regenerate.
     static let __allTests__EnvironmentTests = [
         ("testArray", testArray),
+        ("testCGFloatConformance", testCGFloatConformance),
         ("testCustomEnumConformance", testCustomEnumConformance),
+        ("testDataConformance", testDataConformance),
         ("testDefaultEnumConformance", testDefaultEnumConformance),
         ("testDictionary", testDictionary),
         ("testDynamicMemberSubscripts", testDynamicMemberSubscripts),
         ("testEmptyStringArray", testEmptyStringArray),
         ("testEmptyStringDictionary", testEmptyStringDictionary),
         ("testEmptyStringSet", testEmptyStringSet),
-        ("testFoundationTypes", testFoundationTypes),
         ("testSet", testSet),
         ("testStandardLibraryTypes", testStandardLibraryTypes),
         ("testStaticDynamicMemberSubscripts", testStaticDynamicMemberSubscripts),
         ("testStaticSubscripts", testStaticSubscripts),
         ("testSubscripts", testSubscripts),
+        ("testURLConformance", testURLConformance),
+        ("testUUIDConformance", testUUIDConformance),
     ]
 }
 
