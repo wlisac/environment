@@ -110,36 +110,90 @@ class EnvironmentTests: XCTestCase {
         XCTAssertEqual(env.FLOAT, "10.0")
     }
     
-    func testFoundationTypes() {
+    func testURLConformance() {
         let env = Environment.environment
         
         // swiftlint:disable:next force_unwrapping
         let url = URL(string: "https://example.com")!
-        // swiftlint:disable:next force_unwrapping
-        let uuid = UUID(uuidString: "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")!
-        let cgFloat = CGFloat(10.0)
         
         env.URL = url.absoluteString
-        env.UUID = uuid.uuidString
-        env.CG_FLOAT = "10.0"
         
         XCTAssertEqual(env.URL, url)
-        XCTAssertEqual(env.UUID, uuid)
-        XCTAssertEqual(env.CG_FLOAT, cgFloat)
+        XCTAssertEqual(env.URL, url.absoluteString)
         
         env.URL = url
-        env.UUID = uuid
-        env.CG_FLOAT = cgFloat
         
         XCTAssertEqual(env.URL, url)
-        XCTAssertEqual(env.UUID, uuid)
-        XCTAssertEqual(env.CG_FLOAT, cgFloat)
-        
         XCTAssertEqual(env.URL, url.absoluteString)
+        
+        env.URL = nil
+        
+        XCTAssertNil(env.URL)
+    }
+    
+    func testUUIDConformance() {
+        let env = Environment.environment
+        
+        // swiftlint:disable:next force_unwrapping
+        let uuid = UUID(uuidString: "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")!
+        
+        env.UUID = uuid.uuidString
+        
+        XCTAssertEqual(env.UUID, uuid)
         XCTAssertEqual(env.UUID, uuid.uuidString)
+        
+        env.UUID = uuid
+        
+        XCTAssertEqual(env.UUID, uuid)
+        XCTAssertEqual(env.UUID, uuid.uuidString)
+        
+        env.UUID = nil
+        
+        XCTAssertNil(env.UUID)
+    }
+    
+    func testCGFloatConformance() {
+        let env = Environment.environment
+        
+        let cgFloat = CGFloat(10.0)
+        
+        env.CG_FLOAT = "10.0"
+        
+        XCTAssertEqual(env.CG_FLOAT, cgFloat)
         XCTAssertEqual(env.CG_FLOAT, "10.0")
         
-        XCTAssertNil(env.URL as CGFloat?)
+        env.CG_FLOAT = cgFloat
+        
+        XCTAssertEqual(env.CG_FLOAT, cgFloat)
+        XCTAssertEqual(env.CG_FLOAT, "10.0")
+        
+        env.CG_FLOAT = "invalid"
+        
+        XCTAssertNil(env.CG_FLOAT as CGFloat?)
+        
+        env.CG_FLOAT = nil
+        
+        XCTAssertNil(env.CG_FLOAT)
+    }
+    
+    func testDataConformance() {
+        let env = Environment.environment
+        
+        let data = Data("hello".utf8)
+        
+        env.DATA = "hello"
+        
+        XCTAssertEqual(env.DATA, data)
+        XCTAssertEqual(env.DATA, "hello")
+        
+        env.DATA = data
+        
+        XCTAssertEqual(env.DATA, data)
+        XCTAssertEqual(env.DATA, "hello")
+        
+        env.DATA = nil
+        
+        XCTAssertNil(env.DATA)
     }
     
     func testDefaultEnumConformance() {

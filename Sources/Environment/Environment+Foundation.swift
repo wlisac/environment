@@ -44,3 +44,14 @@ extension CGFloat: EnvironmentStringConvertible {
         return native.environmentString
     }
 }
+
+
+extension Data: EnvironmentStringConvertible {
+    public init(environmentString: String) {
+        self = Data(environmentString.utf8)
+    }
+    
+    public var environmentString: String {
+        return String(decoding: self, as: UTF8.self)
+    }
+}
