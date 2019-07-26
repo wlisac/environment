@@ -15,7 +15,7 @@ Welcome to **Environment** – a nicer, type-safe way of working with environmen
 
 ### Access Environment Variables
 
-The `Environment` struct provides a type-safe interface to variables in the environment.
+The `Environment` struct provides a type-safe API to get and set environment variables.
 
 ```swift
 import Environment
