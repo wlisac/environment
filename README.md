@@ -2,7 +2,7 @@
 
 ![swift](https://img.shields.io/badge/Swift-5.0%20%7C%205.1-orange.svg)
 ![platforms](https://img.shields.io/badge/platforms-macOS%20%7C%20Linux%20%7C%20iOS%20%7C%20tvOS%20%7C%20watchOS-lightgrey.svg)
-![version](https://img.shields.io/badge/version-0.9.0-blue.svg)
+![version](https://img.shields.io/badge/version-0.10.0-blue.svg)
 [![twitter](https://img.shields.io/badge/twitter-@wlisac-blue.svg)](https://twitter.com/wlisac)
 <br>
 [![build](https://travis-ci.com/wlisac/environment.svg?branch=master)](https://travis-ci.com/wlisac/environment)
@@ -83,7 +83,7 @@ Environment.PORT = 8000
 
 Environment variables can be converted from a `String` representation to any type that conforms to the `EnvironmentStringConvertible` protocol.
 
-Standard Library and Foundation types like `Int`, `Float`, `Double`, `Bool`, `URL`, `UUID`, and more are already extended to conform to `EnvironmentStringConvertible`. Collection types like  `Array`, `Set`, and `Dictionary` are also extended with conditional conformance.
+Standard Library and Foundation types like `Int`, `Float`, `Double`, `Bool`, `URL`, `UUID`, `Data`, and more are already extended to conform to `EnvironmentStringConvertible`. Collection types like  `Array`, `Set`, and `Dictionary` are also extended with conditional conformance.
 
 You can add conformance to other classes, structures, or enumerations to enable additional types to be used as environment variables.
 
@@ -141,21 +141,21 @@ let defaultDirection: CompassPoint? = environment["DEFAULT_DIRECTION"]
 
 ## API Documentation
 
-Visit our [online API reference](https://wlisac.github.io/environment) for full documentation of the public API.
+Visit our [online API reference](https://wlisac.github.io/environment/Structs/Environment.html) for full documentation of the public API.
 
 ## Installation
 
-`Environment` requires Xcode 10 or a Swift 5 toolchain with the Swift Package Manager. 
+Environment requires Xcode 10 or a Swift 5 toolchain with the Swift Package Manager. 
 
 ### Swift Package Manager
 
-Add the `Environment` package as a dependency to your `Package.swift` file.
+Add the Environment package as a dependency to your `Package.swift` file.
 
 ```swift
-.package(url: "https://github.com/wlisac/environment.git", from: "0.9.0")
+.package(url: "https://github.com/wlisac/environment.git", from: "0.10.0")
 ```
 
-Add `Environment` to your target's dependencies.
+Add Environment to your target's dependencies.
 
 ```swift
 .target(name: "Example", dependencies: ["Environment"])
