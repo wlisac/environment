@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Environment  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+
+    <a title="Environment  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          Environment 0.11.1 Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/wlisac/environment">
+            <img class="header-icon" src="img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">Environment Reference</a>
+      <img class="carat" src="img/carat.png" />
+      Environment  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/Array.html">Array</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/CGFloat.html">CGFloat</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/Data.html">Data</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/Dictionary.html">Dictionary</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/Set.html">Set</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/URL.html">URL</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/UUID.html">UUID</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/EnvironmentStringConvertible.html">EnvironmentStringConvertible</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/Environment.html">Environment</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Structs/EnvironmentVariable.html">EnvironmentVariable</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            
+            <h1 id='environment' class='heading'>🌳 Environment</h1>
+
+<p><img src="https://img.shields.io/badge/Swift-5.0%20%7C%205.1-orange.svg" alt="swift">
+<img src="https://img.shields.io/badge/platforms-macOS%20%7C%20Linux%20%7C%20iOS%20%7C%20tvOS%20%7C%20watchOS-lightgrey.svg" alt="platforms">
+<img src="https://img.shields.io/badge/version-0.11.1-blue.svg" alt="version">
+<a href="https://twitter.com/wlisac"><img src="https://img.shields.io/badge/twitter-@wlisac-blue.svg" alt="twitter"></a>
+<br>
+<a href="https://travis-ci.com/wlisac/environment"><img src="https://travis-ci.com/wlisac/environment.svg?branch=master" alt="build"></a>
+<a href="https://wlisac.github.io/environment/Structs/Environment.html"><img src="https://raw.githubusercontent.com/wlisac/environment/gh-pages/badge.svg?sanitize=true" alt="jazzy"></a>
+<a href="https://codecov.io/gh/wlisac/environment"><img src="https://img.shields.io/codecov/c/github/wlisac/environment" alt="codecov"></a></p>
+
+<p>Welcome to <strong>Environment</strong> – a nicer, type-safe way of working with environment variables in Swift.</p>
+<h2 id='usage' class='heading'>Usage</h2>
+<h3 id='access-environment-variables' class='heading'>Access Environment Variables</h3>
+
+<p>The <code><a href="Structs/Environment.html">Environment</a></code> struct provides a type-safe API to get and set environment variables.</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Environment</span>
+
+<span class="k">let</span> <span class="nv">environment</span> <span class="o">=</span> <span class="kt">Environment</span><span class="o">.</span><span class="n">environment</span>
+
+<span class="c1">// Get "HOST" as String value</span>
+<span class="k">let</span> <span class="nv">host</span> <span class="o">=</span> <span class="n">environment</span><span class="p">[</span><span class="s">"HOST"</span><span class="p">]</span>
+
+<span class="c1">// Set "PORT" to String value of "8000"</span>
+<span class="n">environment</span><span class="p">[</span><span class="s">"PORT"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"8000"</span>
+</code></pre>
+
+<p>Environment variables are accessed as <code>String</code> values by default, but can be <a href="#type-safe-variables">converted</a> to any type that conforms to <code><a href="Protocols/EnvironmentStringConvertible.html">EnvironmentStringConvertible</a></code>.</p>
+<pre class="highlight swift"><code><span class="c1">// Get "HOST" as URL value</span>
+<span class="k">let</span> <span class="nv">host</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?</span> <span class="o">=</span> <span class="n">environment</span><span class="p">[</span><span class="s">"HOST"</span><span class="p">]</span>
+
+<span class="c1">// Get "PORT" as Int value</span>
+<span class="k">let</span> <span class="nv">port</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="o">=</span> <span class="n">environment</span><span class="p">[</span><span class="s">"PORT"</span><span class="p">]</span>
+
+<span class="c1">// Set "PORT" to Int value of 8000</span>
+<span class="n">environment</span><span class="p">[</span><span class="s">"PORT"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8000</span>
+
+<span class="c1">// Get "APP_ID" as UUID value or use a default UUID if "APP_ID" is not set</span>
+<span class="k">let</span> <span class="nv">appID</span> <span class="o">=</span> <span class="n">environment</span><span class="p">[</span><span class="s">"APP_ID"</span><span class="p">]</span> <span class="p">??</span> <span class="kt">UUID</span><span class="p">()</span>
+</code></pre>
+<h3 id='dynamic-member-lookup' class='heading'>Dynamic Member Lookup</h3>
+
+<p>The <code><a href="Structs/Environment.html">Environment</a></code> struct also supports accessing environment variables using <code>@dynamicMemberLookup</code>.</p>
+<pre class="highlight swift"><code><span class="c1">// Get "HOST" as URL value using dynamic member lookup</span>
+<span class="k">let</span> <span class="nv">host</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?</span> <span class="o">=</span> <span class="n">environment</span><span class="o">.</span><span class="kt">HOST</span>
+
+<span class="c1">// Set "PORT" to Int value of 8000 using dynamic member lookup</span>
+<span class="n">environment</span><span class="o">.</span><span class="kt">PORT</span> <span class="o">=</span> <span class="mi">8000</span>
+</code></pre>
+<h3 id='static-subscripts' class='heading'>Static Subscripts</h3>
+
+<p>The <code><a href="Structs/Environment.html">Environment</a></code> struct supports <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0254-static-subscripts.md">static subscript</a> access to environment variables in Swift 5.1.</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Environment</span>
+<span class="kd">import</span> <span class="kt">Foundation</span>
+
+<span class="c1">// Get "HOST" as URL value using static subscript</span>
+<span class="k">let</span> <span class="nv">host</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?</span> <span class="o">=</span> <span class="kt">Environment</span><span class="p">[</span><span class="s">"HOST"</span><span class="p">]</span>
+
+<span class="c1">// Set "PORT" to Int value of 8000 using static subscript</span>
+<span class="kt">Environment</span><span class="p">[</span><span class="s">"PORT"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8000</span>
+</code></pre>
+
+<p><code>@dynamicMemberLookup</code> also works with static subscripts.</p>
+<pre class="highlight swift"><code><span class="c1">// Get "HOST" as URL value using static dynamic member lookup</span>
+<span class="k">let</span> <span class="nv">host</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?</span> <span class="o">=</span> <span class="kt">Environment</span><span class="o">.</span><span class="kt">HOST</span>
+
+<span class="c1">// Set "PORT" to Int value of 8000 using static dynamic member lookup</span>
+<span class="kt">Environment</span><span class="o">.</span><span class="kt">PORT</span> <span class="o">=</span> <span class="mi">8000</span>
+</code></pre>
+<h3 id='property-wrappers' class='heading'>Property Wrappers</h3>
+
+<p>The <code><a href="Structs/EnvironmentVariable.html">EnvironmentVariable</a></code> <a href="https://github.com/apple/swift-evolution/blob/master/proposals/0258-property-wrappers.md">property wrapper</a> enables properties to be backed by environment variables in Swift 5.1.</p>
+
+<p>The following example shows how to use the <code><a href="Structs/EnvironmentVariable.html">EnvironmentVariable</a></code> property wrapper to expose static properties backed by enviornment variables (<code>&quot;HOST&quot;</code> and <code>&quot;PORT&quot;</code>).</p>
+<pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">ServerSettings</span> <span class="p">{</span>
+    <span class="kd">@EnvironmentVariable(name: "HOST")</span>
+    <span class="kd">static</span> <span class="k">var</span> <span class="nv">host</span><span class="p">:</span> <span class="kt">URL</span><span class="p">?</span>
+
+    <span class="kd">@EnvironmentVariable(name: "PORT", defaultValue: 8000)</span>
+    <span class="kd">static</span> <span class="k">var</span> <span class="nv">port</span><span class="p">:</span> <span class="kt">Int</span>
+<span class="p">}</span>
+</code></pre>
+<h3 id='type-safe-variables' class='heading'>Type-Safe Variables</h3>
+
+<p>Environment variables can be converted from a <code>String</code> representation to any type that conforms to the <code><a href="Protocols/EnvironmentStringConvertible.html">EnvironmentStringConvertible</a></code> protocol.</p>
+
+<p>Standard Library and Foundation types like <code>Int</code>, <code>Float</code>, <code>Double</code>, <code>Bool</code>, <code>URL</code>, <code>UUID</code>, <code>Data</code>, and more are already extended to conform to <code><a href="Protocols/EnvironmentStringConvertible.html">EnvironmentStringConvertible</a></code>. Collection types like  <code>Array</code>, <code>Set</code>, and <code>Dictionary</code> are also extended with conditional conformance.</p>
+
+<p>You can add conformance to other classes, structures, or enumerations to enable additional types to be used as environment variables.</p>
+
+<p><strong>Custom <code><a href="Protocols/EnvironmentStringConvertible.html">EnvironmentStringConvertible</a></code> Conformance</strong></p>
+<pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">Beverage</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">coffee</span>
+    <span class="k">case</span> <span class="n">tea</span>
+<span class="p">}</span>
+
+<span class="kd">extension</span> <span class="kt">Beverage</span><span class="p">:</span> <span class="kt">EnvironmentStringConvertible</span> <span class="p">{</span>
+    <span class="nf">init</span><span class="p">?(</span><span class="nv">environmentString</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="n">environmentString</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="s">"coffee"</span><span class="p">:</span>
+            <span class="k">self</span> <span class="o">=</span> <span class="o">.</span><span class="n">coffee</span>
+        <span class="k">case</span> <span class="s">"tea"</span><span class="p">:</span>
+            <span class="k">self</span> <span class="o">=</span> <span class="o">.</span><span class="n">tea</span>
+        <span class="k">default</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">nil</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">var</span> <span class="nv">environmentString</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="k">self</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">coffee</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">"coffee"</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">tea</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">"tea"</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="nv">beverage</span><span class="p">:</span> <span class="kt">Beverage</span><span class="p">?</span> <span class="o">=</span> <span class="n">environment</span><span class="p">[</span><span class="s">"DEFAULT_BEVERAGE"</span><span class="p">]</span>
+</code></pre>
+
+<p><strong>Default <code><a href="Protocols/EnvironmentStringConvertible.html">EnvironmentStringConvertible</a></code> Conformance</strong></p>
+
+<p>A default implementation of <code><a href="Protocols/EnvironmentStringConvertible.html">EnvironmentStringConvertible</a></code> is provided for types that already conform to <code>LosslessStringConvertible</code> or <code>RawRepresentable</code>.</p>
+
+<p>For example, <code>String</code>-backed enums are <code>RawRepresentable</code> and may use the default implementation for <code><a href="Protocols/EnvironmentStringConvertible.html">EnvironmentStringConvertible</a></code> conformance.</p>
+<pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">CompassPoint</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">north</span>
+    <span class="k">case</span> <span class="n">south</span>
+    <span class="k">case</span> <span class="n">east</span>
+    <span class="k">case</span> <span class="n">west</span>
+<span class="p">}</span>
+
+<span class="kd">extension</span> <span class="kt">CompassPoint</span><span class="p">:</span> <span class="kt">EnvironmentStringConvertible</span> <span class="p">{</span> <span class="p">}</span>
+
+<span class="k">let</span> <span class="nv">defaultDirection</span><span class="p">:</span> <span class="kt">CompassPoint</span><span class="p">?</span> <span class="o">=</span> <span class="n">environment</span><span class="p">[</span><span class="s">"DEFAULT_DIRECTION"</span><span class="p">]</span>
+</code></pre>
+<h2 id='api-documentation' class='heading'>API Documentation</h2>
+
+<p>Visit the <a href="https://wlisac.github.io/environment/Structs/Environment.html">online API reference</a> for full documentation of the public API.</p>
+<h2 id='installation' class='heading'>Installation</h2>
+
+<p>Environment requires Xcode 10 or a Swift 5 toolchain with the Swift Package Manager. </p>
+<h3 id='swift-package-manager' class='heading'>Swift Package Manager</h3>
+
+<p>Add the Environment package as a dependency to your <code>Package.swift</code> file.</p>
+<pre class="highlight swift"><code><span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/wlisac/environment.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"0.11.1"</span><span class="p">)</span>
+</code></pre>
+
+<p>Add Environment to your target&rsquo;s dependencies.</p>
+<pre class="highlight swift"><code><span class="o">.</span><span class="nf">target</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"Example"</span><span class="p">,</span> <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span><span class="s">"Environment"</span><span class="p">])</span>
+</code></pre>
+
+          </div>
+        </section>
+
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2019 <a class="link" href="https://twitter.com/wlisac" target="_blank" rel="external">Will Lisac</a>. All rights reserved. (Last updated: 2019-08-03)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.10.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
