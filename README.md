@@ -2,7 +2,7 @@
 
 ![swift](https://img.shields.io/badge/Swift-5.0%20%7C%205.1-orange.svg)
 ![platforms](https://img.shields.io/badge/platforms-macOS%20%7C%20Linux%20%7C%20iOS%20%7C%20tvOS%20%7C%20watchOS-lightgrey.svg)
-![version](https://img.shields.io/badge/version-0.10.0-blue.svg)
+![version](https://img.shields.io/badge/version-0.11.0-blue.svg)
 [![twitter](https://img.shields.io/badge/twitter-@wlisac-blue.svg)](https://twitter.com/wlisac)
 <br>
 [![build](https://travis-ci.com/wlisac/environment.svg?branch=master)](https://travis-ci.com/wlisac/environment)
@@ -171,7 +171,7 @@ Environment requires Xcode 10 or a Swift 5 toolchain with the Swift Package Mana
 Add the Environment package as a dependency to your `Package.swift` file.
 
 ```swift
-.package(url: "https://github.com/wlisac/environment.git", from: "0.10.0")
+.package(url: "https://github.com/wlisac/environment.git", from: "0.11.0")
 ```
 
 Add Environment to your target's dependencies.
