@@ -82,6 +82,22 @@ let host: URL? = Environment.HOST
 Environment.PORT = 8000
 ```
 
+### Property Wrappers
+
+The `EnvironmentVariable` [property wrapper](https://github.com/apple/swift-evolution/blob/master/proposals/0258-property-wrappers.md) enables properties to be backed by environment variables in Swift 5.1.
+
+The following example shows how to use the `EnvironmentVariable` property wrapper to expose static properties backed by enviornment variables (`"HOST"` and `"PORT"`).
+
+```swift
+enum ServerSettings {
+    @EnvironmentVariable(name: "HOST")
+    static var host: URL?
+    
+    @EnvironmentVariable(name: "PORT", defaultValue: 8000)
+    static var port: Int
+}
+```
+
 ### Type-Safe Variables
 
 Environment variables can be converted from a `String` representation to any type that conforms to the `EnvironmentStringConvertible` protocol.

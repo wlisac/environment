@@ -209,7 +209,7 @@ extension Environment {
     ///   for the given `dynamicMember` if `dynamicMember` is in the environment; otherwise, `nil`.
     public static subscript<T>(dynamicMember member: String) -> T? where T: EnvironmentStringConvertible {
         get {
-            return self[member]
+            self[member]
         }
         set {
             self[member] = newValue
