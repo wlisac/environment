@@ -22,8 +22,8 @@ jobs:
       script: swift test --parallel
 
     - <<: *linux
-      name: Linux / Swift 5.1 (2019-07-19)
-      env: SWIFT_VERSION=5.1-DEVELOPMENT-SNAPSHOT-2019-07-19-a
+      name: Linux / Swift 5.1
+      env: SWIFT_VERSION=5.1
       
     - &macOS
       name: macOS / Swift 5.0
@@ -43,7 +43,7 @@ jobs:
 
     - <<: *xcodebuild
       name: iOS / Swift 5.1
-      xcode_destination: platform=iOS Simulator,OS=13.0,name=iPhone Xs
+      xcode_destination: platform=iOS Simulator,OS=13.0,name=iPhone 11
       osx_image: xcode11
 
     - <<: *xcodebuild
